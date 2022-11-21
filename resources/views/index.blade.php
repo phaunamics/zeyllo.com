@@ -8,13 +8,27 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <style>
+            /* For Webkit-based browsers (Chrome, Safari and Opera) */
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* For IE, Edge and Firefox */
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
         <header>
             <nav class="container flex justify-between p-6 mx-auto">
-                <div class="items-center flex">
+                <div class="flex items-center">
                     <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
                 </div>
 
@@ -33,7 +47,8 @@
 
         <main class="py-8">
 
-            <section class="container flex items-center mx-auto lg:flex-row px-16">
+            <!-- Join waitlist section -->
+            <section class="container flex items-center px-16 mx-auto">
                 <div class="w-1/2">
                     <div
                         class="flex bg-primary-light rounded-lg py-1.5 px-2.5 space-x-2 w-fit items-center mb-10">
@@ -74,8 +89,69 @@
                     </div>
                 </div>
 
-                <div class="w-1/2 flex justify-end">
+                <div class="flex justify-end w-1/2">
                     <img src="{{ asset('assets/images/mobile.png') }}" alt="">
+                </div>
+            </section>
+
+            <!-- Food section -->
+            <section class="container px-16 mx-auto mt-16">
+                <div class="flex flex-col items-center w-full py-10 rounded-lg bg-primary-light">
+                    <div class="mb-5 space-y-3 text-center">
+                        <h3 class="text-2xl font-extrabold">Just the way you like it</h3>
+
+                        <p class="font-medium text-g1">
+                            Order your favorite meals from our brands, curated to your taste. <br>
+                            There’s something for everyone on Zeyllo
+                        </p>
+                    </div>
+
+                    <div class="flex space-x-10">
+                        <div class="px-4 pt-4 bg-[#0B6055] rounded-lg">
+                            <img src="{{ asset('assets/images/f1.png') }}" class="w-64" alt="">
+                            <p class="pt-5 pb-4 text-2xl font-bold text-white">Turkspot</p>
+                        </div>
+
+                        <div class="px-4 pt-4 bg-[#0B6055] rounded-lg">
+                            <img src="{{ asset('assets/images/f2.png') }}" class="w-64" alt="">
+                            <p class="pt-5 pb-4 text-2xl font-bold text-white">Chickena</p>
+                        </div>
+
+                        <div class="px-4 pt-4 bg-[#0B6055] rounded-lg">
+                            <img src="{{ asset('assets/images/f3.png') }}" class="w-64" alt="">
+                            <p class="pt-5 pb-4 text-2xl font-bold text-white">Betapasta</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews section -->
+            <section class="container px-16 mx-auto mt-16">
+                <div class="flex flex-col space-y-10">
+                    <h3 class="text-2xl font-extrabold text-center text-b3">
+                        <span class="underline decoration-warning decoration-8">
+                            Did I hear Zeyllo?
+                        </span>
+                        What our customers are saying
+                    </h3>
+
+                    <div class="flex space-x-6 overflow-auto scrollbar-hide">
+                        @for ($i = 0; $i < 7; $i++) <div
+                            class="px-[30px] min-w-[306px] bg-[#F3F3F3] rounded-lg py-6">
+                            <p class="text-g1">
+                                “I order the same pasta full meal on Zeyllo everytime and it always
+                                gets delivered, the same
+                                delicious taste both when I’m in Warri or Lagos. Brilliant service”
+                            </p>
+
+                            <p class="flex items-center justify-between mt-6 font-semibold text-b3">
+                                @jeff_osimhen
+
+                                <x-socials.twitter />
+                            </p>
+                    </div>
+                    @endfor
+                </div>
                 </div>
             </section>
         </main>
