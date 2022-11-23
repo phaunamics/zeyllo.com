@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Zeyllo') }}</title>
 
     <style>
         /* For Webkit-based browsers (Chrome, Safari and Opera) */
@@ -26,31 +26,62 @@
 </head>
 
 <body>
-    <header>
-        <nav class="container flex justify-between p-6 mx-auto">
-            <div class="flex items-center">
-                <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
+    <header x-data="{ 'is_nav': false }">
+        <nav class="container flex flex-col justify-between p-6 mx-auto border-b md:px-16 md:border-none">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
+                </div>
+
+                <ul class="items-center hidden space-x-10 font-medium lg:space-x-16 md:flex">
+                    <li>For Kitchens</li>
+                    <li>For Investors</li>
+                    <li>
+                        <button class="px-6 py-3 font-bold text-white rounded-lg bg-b3">
+                            Get early access
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="cursor-pointer md:hidden" @click="is_nav = !is_nav">
+                    <span x-show="!is_nav">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(9,44,76,1)" />
+                        </svg>
+                    </span>
+
+                    <span x-show="is_nav">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                                d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
+                                fill="rgba(9,44,76,1)" />
+                        </svg>
+                    </span>
+                </div>
             </div>
 
-            <ul class="flex items-center space-x-16 font-medium">
-                <li>For Kitchens</li>
-                <li>For Investors</li>
-                <li>
-                    <button class="px-6 py-3 font-bold text-white rounded-lg bg-b3">
-                        Get early access
-                    </button>
-                </li>
-
-            </ul>
+            <div x-show="is_nav" class="pt-5 mt-5">
+                <ul class="flex flex-col space-y-2 font-medium">
+                    <li>For Kitchens</li>
+                    <li>For Investors</li>
+                    <li>
+                        <button class="px-6 py-3 font-bold text-white rounded-lg bg-b3">
+                            Get early access
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main class="py-8">
 
         <!-- Join waitlist section -->
-        <section class="container flex items-center px-16 mx-auto">
-            <div class="w-1/2">
-                <div class="mb-10 flex w-fit items-center space-x-2 rounded-lg bg-primary-light py-1.5 px-2.5">
+        <section class="container flex flex-col items-center px-6 mx-auto md:flex-row md:px-16">
+            <div class="md:w-1/2">
+                <div class="mb-4 md:mb-10 flex w-fit items-center space-x-2 rounded-lg bg-primary-light py-1.5 px-2.5">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14">
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -66,18 +97,18 @@
                 </div>
 
                 <div class="text-b3">
-                    <h3 class="text-[40px] font-extrabold leading-[54px] tracking-wide">
+                    <h3 class="text-3xl md:text-[40px] font-extrabold md:leading-[54px] tracking-wide">
                         The new way to order food! Enjoy delicious meals for less anywhere,
-                        anytime
+                        anytime.
                     </h3>
 
-                    <p class="mt-2 mb-10 leading-6">
-                        There’s always a zeyllo kitchen around the corner. Get <br>
-                        to enjoy your favorite meals anywhere and everywhere
+                    <p class="mt-2 mb-10 text-lg leading-6">
+                        There’s always a zeyllo kitchen around the corner. Get <br class="hidden md:block">
+                        to enjoy your favorite meals anywhere and everywhere.
                     </p>
 
-                    <div class="space-x-2">
-                        <input class="w-2/5 px-5 py-3 text-sm leading-5 rounded-lg outline-none border-g4"
+                    <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-2 md:flex-row">
+                        <input class="w-full px-5 py-3 text-sm leading-5 rounded-lg outline-none md:w-2/5 border-g4"
                             type="email" placeholder="Enter your email">
 
                         <button class="px-12 py-3 font-bold text-white rounded-lg bg-b3">
@@ -87,24 +118,24 @@
                 </div>
             </div>
 
-            <div class="flex justify-end w-1/2">
+            <div class="flex justify-end mt-20 md:w-1/2 md:mt-0">
                 <img src="{{ asset('assets/images/mobile.png') }}" alt="">
             </div>
         </section>
 
         <!-- Food section -->
-        <section class="container px-16 mx-auto mt-16">
+        <section class="container px-6 mx-auto mt-16 md:px-16">
             <div class="flex flex-col items-center w-full py-10 rounded-lg bg-primary-light">
                 <div class="mb-5 space-y-3 text-center">
                     <h3 class="text-2xl font-extrabold">Just the way you like it</h3>
 
-                    <p class="font-medium text-g1">
-                        Order your favorite meals from our brands, curated to your taste. <br>
+                    <p class="px-4 font-medium text-g1 md:px-0">
+                        Order your favorite meals from our brands, curated to your taste. <br class="hidden md:block">
                         There’s something for everyone on Zeyllo
                     </p>
                 </div>
 
-                <div class="flex space-x-10">
+                <div class="flex flex-col space-y-10 md:flex-row md:space-y-0 md:space-x-10">
                     <div class="rounded-lg bg-[#0B6055] px-4 pt-4">
                         <img class="w-64" src="{{ asset('assets/images/f1.png') }}" alt="">
                         <p class="pt-5 pb-4 text-2xl font-bold text-white">Turkspot</p>
@@ -124,7 +155,7 @@
         </section>
 
         <!-- Reviews section -->
-        <section class="container px-16 mx-auto mt-16">
+        <section class="container px-6 mx-auto mt-16 md:px-16">
             <div class="flex flex-col space-y-10">
                 <h3 class="text-2xl font-extrabold text-center text-b3">
                     <span class="underline decoration-warning decoration-8">
@@ -156,8 +187,8 @@
 
     <footer class="mt-8">
 
-        <section class="container flex items-center px-16 mx-auto">
-            <div class="w-1/3 space-y-5">
+        <section class="container flex flex-col items-center px-6 mx-auto space-y-6 md:flex-row md:px-16 md:space-y-0">
+            <div class="space-y-5 md:w-1/3">
                 <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
 
                 <p class="text-g1">
@@ -172,7 +203,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-end w-2/3 gap-x-16">
+            <div class="flex flex-col w-full md:flex-row md:justify-end md:w-2/3 md:gap-x-16 gap-y-4 md:gap-y-0">
                 <div>
                     <h6 class="mb-3 font-extrabold text-b2">Menu</h6>
 
@@ -206,7 +237,7 @@
             </div>
         </section>
 
-        <section class="container flex items-center px-16 mx-auto mt-20">
+        <section class="container flex items-center px-6 mx-auto mt-10 md:px-16 md:mt-20">
             <p class="w-full py-6 text-sm font-medium text-center border-t text-g1 border-b4/80">
                 © 2022 Zeyllo. All rights reserved
             </p>
