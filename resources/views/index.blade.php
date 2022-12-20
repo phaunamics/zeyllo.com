@@ -33,9 +33,11 @@
                     <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
                 </div>
 
-                <ul class="items-center hidden space-x-10 font-medium lg:space-x-16 md:flex">
+                <ul class="items-center hidden space-x-4 font-medium lg:space-x-16 md:flex">
                     <li>For Kitchens</li>
                     <li>For Investors</li>
+                    <li>Jobs</li>
+                    <li>Blog</li>
                     <li>
                         <button class="px-6 py-3 font-bold text-white rounded-lg bg-b3">
                             Get early access
@@ -66,6 +68,8 @@
                 <ul class="flex flex-col space-y-2 font-medium">
                     <li>For Kitchens</li>
                     <li>For Investors</li>
+                    <li>Jobs</li>
+                    <li>Blog</li>
                     <li>
                         <button class="px-6 py-3 font-bold text-white rounded-lg bg-b3">
                             Get early access
@@ -107,14 +111,22 @@
                         to enjoy your favorite meals anywhere and everywhere.
                     </p>
 
-                    <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-2 md:flex-row">
-                        <input class="w-full px-5 py-3 text-sm leading-5 rounded-lg outline-none md:w-2/5 border-g4"
-                            type="email" placeholder="Enter your email">
+                    <x-success />
 
-                        <button class="px-12 py-3 font-bold text-white rounded-lg bg-b3">
-                            Join waitlist
-                        </button>
-                    </div>
+                    <x-errors class="mb-2" />
+
+                    <form action="{{ route('join-waitlist') }}" method="POST">
+                        <div class="flex flex-col space-y-3 md:space-y-0 md:gap-x-2 md:flex-row">
+                            @csrf
+
+                            <input class="w-full px-5 py-3 text-sm leading-5 rounded-lg outline-none md:w-2/5 border-g4"
+                                type="email" name="email" placeholder="Enter your email">
+
+                            <button class="px-12 py-3 font-bold text-white rounded-lg bg-b3">
+                                Join waitlist
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
