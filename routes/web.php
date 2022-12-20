@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WaitlistController;
+use App\Models\Waitlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/', function () {
 });
 
 Route::post('join', WaitlistController::class)->name('join-waitlist');
+
+Route::get('lists', function() {
+    return Waitlist::get();
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
