@@ -3,6 +3,7 @@
 use App\Models\Waitlist;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WaitlistController;
 
@@ -38,5 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('posts', PostController::class);
+
+Route::post('/uploads', UploadController::class)->name('upload');
 
 require __DIR__ . '/auth.php';
