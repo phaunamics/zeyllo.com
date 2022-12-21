@@ -46,8 +46,11 @@
                                                     {{ $post->title }}</td>
                                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                                     {{ auth()->user()->name }}</td>
-                                                <td class="px-3 py-4 text-sm text-gray-500 uppercase whitespace-nowrap">
-                                                    {{ $post->status }}</td>
+                                                <td class="px-3 py-4 text-xs text-sm font-bold text-gray-100 uppercase whitespace-nowrap">
+                                                    <x-badge :status="$post->status">
+                                                        {{ $post->status }}
+                                                    </x-badge>
+                                                </td>
                                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                                     {{ $post->created_at->diffForHumans() }}
                                                 </td>
@@ -64,8 +67,7 @@
                                                         </svg>
                                                     </a>
 
-                                                    {{-- <a href="{{ route('posts.edit') }}"> --}}
-                                                    <a href="#">
+                                                    <a href="{{ route('posts.edit', $post) }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                             class="w-6 h-6">
