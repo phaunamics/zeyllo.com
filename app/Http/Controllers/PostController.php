@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::with('user')->paginate(10);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -55,7 +55,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post->load('user');
+
+        return view('admin.posts.show', compact('post'));
     }
 
     /**

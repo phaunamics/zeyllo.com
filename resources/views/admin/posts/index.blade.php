@@ -45,8 +45,8 @@
                                                     class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6 lg:pl-8">
                                                     {{ $post->title }}</td>
                                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                                    {{ auth()->user()->name }}</td>
-                                                <td class="px-3 py-4 text-xs text-sm font-bold text-gray-100 uppercase whitespace-nowrap">
+                                                    {{ $post->user->name }}</td>
+                                                <td class="px-3 py-4 text-xs font-bold text-gray-100 uppercase whitespace-nowrap">
                                                     <x-badge :status="$post->status">
                                                         {{ $post->status }}
                                                     </x-badge>
@@ -55,8 +55,7 @@
                                                     {{ $post->created_at->diffForHumans() }}
                                                 </td>
                                                 <td class="relative flex py-4 pl-3 space-x-6 whitespace-nowrap">
-                                                    {{-- <a href="{{ route('posts.show') }}"> --}}
-                                                    <a href="#">
+                                                    <a href="{{ route('posts.show', $post) }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                             class="w-6 h-6">

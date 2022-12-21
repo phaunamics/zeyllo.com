@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
@@ -24,7 +25,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'  => 'required|max:255|string|unique:posts,title,' . $this->post->id,
+            'title'  => ['required', 'max:255', 'string', Rule::unique('posts')->ignore($this->post)],
             'body'   => 'required',
             'status' => 'required|in:draft,published'
         ];
