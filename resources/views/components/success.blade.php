@@ -1,7 +1,8 @@
 @props(['message'])
 
 @if ($message = Session::get('success'))
-    <div class="inline-flex w-fit mb-4 overflow-hidden bg-white rounded-lg shadow-md">
+    <div class="inline-flex w-fit mb-4 overflow-hidden bg-white rounded-lg shadow-md" x-data="{ show: true }"
+        x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)">
         <div class="flex items-center justify-center w-12 bg-green-500">
             <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                 <path
