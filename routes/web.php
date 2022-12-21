@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Waitlist;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WaitlistController;
-use App\Models\Waitlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::resource('posts', PostController::class);
 });
