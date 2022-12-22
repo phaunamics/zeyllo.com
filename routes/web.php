@@ -2,6 +2,7 @@
 
 use App\Models\Waitlist;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
@@ -20,6 +21,11 @@ use App\Http\Controllers\WaitlistController;
 
 Route::get('/', function () {
     return view('index');
+});
+
+Route::controller(BlogController::class)->group(function () {
+    Route::get('blog', 'index')->name('blog.index');
+    Route::get('blog/{title}', 'show')->name('blog.show');
 });
 
 Route::post('join', WaitlistController::class)->name('join-waitlist');

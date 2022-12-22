@@ -30,20 +30,20 @@
     <header x-data="{ 'is_nav': false }">
         <nav class="container flex flex-col justify-between p-6 mx-auto border-b md:px-16 md:border-none">
             <div class="flex justify-between">
-                <div class="flex items-center">
+                <a href="/" class="flex items-center">
                     <img src="{{ asset('assets/images/Logo.svg') }}" alt="Zeyllo">
-                </div>
+                </a>
 
                 <div class="items-center hidden space-x-4 lg:space-x-16 md:flex">
-                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" class="text-base text-black">
+                    <x-nav-link class="text-base text-black">
                         {{ __('For Kitchens') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" class="text-base text-black">
+                    <x-nav-link class="text-base text-black">
                         {{ __('For Investors') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" class="text-base text-black">
+                    <x-nav-link class="text-base text-black">
                         {{ __('Jobs') }}
                     </x-nav-link>
 
