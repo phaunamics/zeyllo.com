@@ -4,7 +4,7 @@
             <div class="space-y-2">
                 <a href="{{ route('blog.show', $post->title) }}" class="text-2xl font-bold">{{ $post->title }}</a>
 
-                <h3 class="truncate">{!! $post->body !!}</h3>
+                <h3 class="truncate">{!! Str::limit($post->body, 50) !!}</h3>
 
                 <div class="flex justify-between text-sm">
                     <p class="font-bold">{{ $post->user->name }}</p>
